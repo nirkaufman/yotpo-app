@@ -13,19 +13,18 @@ function TodoApp() {
 
   const counter = useRef(0);
 
-  const addITem = () => {
+  const addITem = (newItem) => {
     counter.current += 1;
     if(counter.current === 5) {
       return alert('cant add more then 6');
     }
-    setItems([ ...items, {id: 4, title: 'new item'} ]);
+    setItems([ ...items, newItem ]);
   }
 
   return (
     <>
-      <button onClick={addITem}>ADD</button>
       <section className="todoapp">
-        <Header/>
+        <Header onNewItem={addITem}/>
         <Main items={items}/>
         <Footer/>
       </section>
