@@ -13,8 +13,8 @@ function TodoApp() {
       <TodolistContext.Provider value={ todolistList }>
         <section className="todoapp">
           <Header/>
-          <Main/>
-          <Footer/>
+          <Main />
+          <Footer />
         </section>
       </TodolistContext.Provider>
     </>
