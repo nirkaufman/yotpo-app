@@ -1,12 +1,13 @@
-import { useRef } from "react";
+import React, { useContext, useRef } from "react";
+import { TodolistContext } from "../providers/todolist";
 
-
-function Header({ onNewItem }) {
+function Header() {
+  const { addItem } = useContext(TodolistContext);
   const inputRef = useRef(null);
 
   const createItem = (event) => {
     if(event.key === 'Enter') {
-      onNewItem({
+      addItem({
         title: event.target.value,
         completed: false
       })
@@ -26,4 +27,4 @@ function Header({ onNewItem }) {
   );
 }
 
-export default Header;
+export default React.memo(Header);

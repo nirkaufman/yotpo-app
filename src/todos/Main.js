@@ -1,13 +1,11 @@
 import List from "./List";
 
-function Main({ items }) {
-  console.log('Main function executed');
-
+function Main() {
   return (
     <section className="main">
       <input className="toggle-all"
              type="checkbox"/>
-      <List items={items} />
+      <List/>
     </section>
   );
 }

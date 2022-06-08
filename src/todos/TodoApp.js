@@ -2,32 +2,21 @@ import './todos.css';
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-import {useState, useRef} from 'react';
+import { useList } from "../hooks/useList";
+import {TodolistContext} from '../providers/todolist';
 
 function TodoApp() {
-  const [items, setItems] = useState([
-    { id: 1, title: 'task #1', completed: false },
-    { id: 2, title: 'task #1', completed: false },
-    { id: 3, title: 'task #1', completed: false },
-  ]);
-
-  const counter = useRef(0);
-
-  const addITem = (newItem) => {
-    counter.current += 1;
-    if(counter.current === 5) {
-      return alert('cant add more then 6');
-    }
-    setItems([ ...items, newItem ]);
-  }
+  const todolistList = useList('todos');
 
   return (
     <>
-      <section className="todoapp">
-        <Header onNewItem={addITem}/>
-        <Main items={items}/>
-        <Footer/>
-      </section>
+      <TodolistContext.Provider value={ todolistList }>
+        <section className="todoapp">
+          <Header/>
+          <Main/>
+          <Footer/>
+        </section>
+      </TodolistContext.Provider>
     </>
   );
 }
